@@ -106,8 +106,8 @@ int main(int argc, char** argv){
         std::cout << "Suma Total en openMP: " << acumParalel << "\n" <<std::endl;
 
         std::cout << "====Tiempos totales==== " << std::endl;
-        std::cout << "Tiempo total secuencial: " << totalTimeFill_secuencial + totalTimeSum_secuencial  << std::endl;
-        std::cout << "Tiempo Total openMP: " << totalTimeFill_openMP + totalTimeSum_paralel  << "\n" <<std::endl;
+        std::cout << "Tiempo total secuencial: " << totalTimeFill_secuencial + totalTimeSum_secuencial << "[ms]" << std::endl;
+        std::cout << "Tiempo Total openMP: " << totalTimeFill_openMP + totalTimeSum_paralel << "[ms]" << "\n" <<std::endl;
 
 	return(EXIT_SUCCESS);
 
