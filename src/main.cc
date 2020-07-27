@@ -91,20 +91,23 @@ int main(int argc, char** argv){
      //  }
 
 	std::cout << "\n";
- 	std::cout << "====Llenado arreglo====" << std::endl;
-	std::cout << "Tiempo secuencial :"  << totalTimeFill_secuencial<< "[ms]" << std::endl;
-	std::cout << "Tiempo openMP    :"  << totalTimeFill_openMP<< "[ms]" << std::endl;
-	std::cout << "SpeedUp           :"  << (double)totalTimeFill_secuencial/totalTimeFill_openMP << std::endl;
+        std::cout << "====Llenado arreglo====" << std::endl;
+        std::cout << "Tiempo secuencial : "  << totalTimeFill_secuencial<< "[ms]" << std::endl;
+        std::cout << "Tiempo openMP    : "  << totalTimeFill_openMP<< "[ms]" << std::endl;
+        std::cout << "SpeedUp           : "  << (double)totalTimeFill_secuencial/totalTimeFill_openMP << "\n" <<std::endl;
 
-	std::cout << "====Modulo de Sumas del arreglo====" << std::endl;
-        std::cout << "Tiempo secuencial :"  << totalTimeSum_secuencial << "[ms]" << std::endl;
-        std::cout << "Tiempo openMP    :"  << totalTimeSum_paralel << "[ms]" << std::endl;
-        std::cout << "SpeedUp           :"  << (double)totalTimeSum_secuencial/totalTimeSum_paralel << "\n" <<std::endl;
+        std::cout << "====Modulo de Sumas del arreglo====" << std::endl;
+        std::cout << "Tiempo secuencial : "  << totalTimeSum_secuencial << "[ms]" << std::endl;
+        std::cout << "Tiempo openMP    : "  << totalTimeSum_paralel << "[ms]" << std::endl;
+        std::cout << "SpeedUp           : "  << (double)totalTimeSum_secuencial/totalTimeSum_paralel << "\n" <<std::endl;
 
- 	std::cout << "====Comprobación de sumas====" << std::endl;
- 	std::cout << "Suma Total serial: " << acumSecuencial << std::endl;
-         std::cout << "Suma Total en openMP: " << acumParalel << std::endl;
- 	std::cout << "\n";
+        std::cout << "====Comprobación de sumas====" << std::endl;
+        std::cout << "Suma Total serial: " << acumSecuencial << std::endl;
+        std::cout << "Suma Total en openMP: " << acumParalel << "\n" <<std::endl;
+
+        std::cout << "====Tiempos totales==== " << std::endl;
+        std::cout << "Tiempo total secuencial: " << totalTimeFill_secuencial + totalTimeSum_secuencial  << std::endl;
+        std::cout << "Tiempo Total openMP: " << totalTimeFill_openMP + totalTimeSum_paralel  << "\n" <<std::endl;
 
 	return(EXIT_SUCCESS);
 
