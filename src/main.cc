@@ -71,7 +71,7 @@ int main(int argc, char** argv){
 	//std::cout << " " << std::endl;
         //std::cout << "Sumas parciales: ";
 
-	//=====SUMA DE NUMEROS===Paralela
+	//=====SUMA DE NUMEROS===OpenMP
         start = std::chrono::high_resolution_clock::now();
 	#pragma omp parallel for reduction(+:acumParalel) num_threads(numThreads)
         for(size_t i = 0; i < totalElementos; ++i){
