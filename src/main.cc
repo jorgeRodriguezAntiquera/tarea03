@@ -1,7 +1,7 @@
 #include <global.h>
 #include <checkArgs.hpp>
 
-uint64_t* arreglo_de_numeros = nullptr;
+uint64_t* array_numbers = nullptr;
 
 int main(int argc, char** argv){
 
@@ -30,26 +30,26 @@ int main(int argc, char** argv){
 
 
 	// ======LLENADO DE LA ESTRUCTURA CON NUMEROS==Secuencial
-	arreglo_de_numeros = new uint64_t[totalElementos];
+	array_numbers = new uint64_t[totalElementos];
 
 	auto start = std::chrono::high_resolution_clock::now();
 	for(uint64_t i = 0; i < totalElementos; ++i){
-                arreglo_de_numeros[i] = unif(rng);
+                array_numbers[i] = unif(rng);
         }
 
 	auto end     = std::chrono::high_resolution_clock::now();
 	auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
 	auto totalTimeFill_secuencial = elapsed.count();
 
-	delete[] arreglo_de_numeros;
+	delete[] array_numbers;
 
 	// ======LLENADO DE LA ESTRUCTURA CON NUMEROS==openMP
-	arreglo_de_numeros = new uint64_t[totalElementos];
+	array_numbers = new uint64_t[totalElementos];
 
 	start = std::chrono::high_resolution_clock::now();
 	#pragma omp parallel for  num_threads(numThreads)
         for(size_t i = 0; i < totalElementos; ++i){
-                arreglo_de_numeros[i] = unif(rng);
+                array_numbers[i] = unif(rng);
         }
 	end     = std::chrono::high_resolution_clock::now();
 	elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
@@ -61,7 +61,7 @@ int main(int argc, char** argv){
 	//=====SUMA===Secuencial	
 	start = std::chrono::high_resolution_clock::now();
 	for (size_t i=0; i< totalElementos; i++){
-		acumSecuencial+= arreglo_de_numeros[i];
+		acumSecuencial+= array_numbers[i];
 	}
 
 	end     = std::chrono::high_resolution_clock::now();
@@ -75,7 +75,7 @@ int main(int argc, char** argv){
         start = std::chrono::high_resolution_clock::now();
 	#pragma omp parallel for reduction(+:acumParalel) num_threads(numThreads)
         for(size_t i = 0; i < totalElementos; ++i){
-                acumParalel += arreglo_de_numeros[i];
+                acumParalel += array_numbers[i];
         }
     	end     = std::chrono::high_resolution_clock::now();
         elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
@@ -87,7 +87,7 @@ int main(int argc, char** argv){
 //	std::cout << "Numeros del arreglo: ";
  //	for (uint64_t i = 0; i < totalElementos; i++)
    //     {
-//                std::cout << arreglo_de_numeros[i] <<  " " ;
+//                std::cout << array_numbers[i] <<  " " ;
      //  }
 
 	std::cout << "\n";
